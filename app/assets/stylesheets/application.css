@@ -11,5 +11,66 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap
  *= require_self
  */
+.inline-select{
+	display: inline
+}
+.inline-select .connection-dropdown{
+	float: left;
+	position: relative;
+  	border-radius: 25px;
+  	margin-bottom: 10px;
+
+}
+.navbar-brand.page-scroll{
+	width:230px;
+	display: inline;
+}
+.navbar-brand.page-scroll img{
+	float: left;
+}
+.header-content .highlight{
+	color: #ef8d00;
+}
+
+.will_paginate_courses{
+	text-align: center;
+}
+.will_paginate_courses .pagination{
+	margin-bottom: 3px;
+	margin-top: 6px;
+}
+.will_paginate_courses .pagination .active span{
+	background-color: #EF8D00;
+	border-color: #EF8D00;
+}
+.will_paginate_courses li a{
+	color: #222222;
+}
+
+.table-hover.courses > tbody > tr:hover{
+	background-color: #3C3C3C;
+}
+.label-cheapest{
+	background-color: #EF8D00;
+}
+.table-day{
+	text-align: center;
+	color: #ef8d00;
+}
+.table-day .day-name{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+.table-time{
+	font-size: 20px;
+}
+.table-date{
+	font-size: 10px;
+}
+.table-price{
+	font-size: 25px;
+}

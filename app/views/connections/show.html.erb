@@ -1,0 +1,74 @@
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2><%= @connection.name %></h2>
+                    <h3>Najniższa cena na tej linii to <b><%= @cheapest_price.to_s %> zł</b></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="bg-dark" style="padding-top:20px">
+        <div class="container">
+            <div class='will_paginate_courses'>
+                <%= will_paginate @courses, renderer: BootstrapPagination::Rails %>
+            </div>
+			<table class="table table-hover courses">
+			    <thead>
+			      <tr>
+			        <th width="33%">Odjazd</th>
+			        <th width="33%">Przyjazd</th>
+			        <th width="34%">Cena</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+                    <!-- #TODO refactor this -->
+			    <% @courses.each_with_index do |c, i|%>
+                <% if (i == 0) || (@courses[i-1].departure_time.to_date != c.departure_time.to_date) %>
+                    <tr>
+                        <td colspan="3" class="table-day">
+                            <div class="day-name">
+                                <%= c.departure_dayname.upcase %> <%= c.departure_time.to_date %>
+                            </div>
+                        </td>
+                    </tr>
+                <% end %>
+			      <tr class=" <%= (c.departure_time.saturday?||c.departure_time.sunday?)? 'weekend' : '' %> ">
+			        <td>
+                        <span class="table-date"><%= c.departure_time.to_date %></span><br>
+                        <span class="table-time"><%= c.departure_time.strftime("%H:%M") %></span>
+                    </td>
+                    <td>
+                        <span class="table-date"><%= c.arrival_time.to_date %></span><br>
+                        <span class="table-time"><%= c.arrival_time.strftime("%H:%M") %></span>
+                    </td>
+			        <td>
+                        <span class="table-price">
+                            <% if c.price==@cheapest_price %>
+                                <span style="color:#EF8D00"><b><%= c.price %>zł </b></span>  <span class="label label-cheapest"> Najtaniej!</span>
+                            <% else %>
+                                <%= c.price %>zł
+                            <% end %>
+                        </span>
+                    </td>
+			      </tr>
+			     <% end %>
+			    </tbody>
+			  </table>
+                <div class='will_paginate_courses'>
+                    <%= will_paginate @courses, renderer: BootstrapPagination::Rails %>
+                </div>
+        </div>
+    </aside>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Używasz wersji beta!</h2>
+                    <hr class="primary">
+                    <p>Aplikacja może zawierać błędy i jest wciąż modyfikowana!</p>
+                    <p><a href="mailto:kocasp@gmail.com">kocasp@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
