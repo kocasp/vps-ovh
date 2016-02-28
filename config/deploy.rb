@@ -1,6 +1,6 @@
 lock '>= 3.1.0'
 set :application, 'Pkpfox'
-set :repo_url, 'git@github.com:kocasp/vps-ovh.git'
+set :repo_url, 'https://github.com/kocasp/vps-ovh.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
