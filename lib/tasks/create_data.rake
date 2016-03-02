@@ -1,8 +1,15 @@
 task :create_data => :environment do
   #remove all past courses
-  Station.create(name: "Kraków Główny")
-  Station.create(name: "Warszawa Centralna")
+  krakow = Station.create(name: "Kraków Główny")
+  warszawa = Station.create(name: "Warszawa Centralna")
+  gdansk = Station.create(name: "Gdańsk Główny")
 
-  Connection.create(station: Station.first, connected_station: Station.last)
-  Connection.create(station: Station.last, connected_station: Station.first)
+  Connection.create(station: krakow, connected_station: warszawa)
+  Connection.create(station: warszawa, connected_station: krakow)
+
+  Connection.create(station: warszawa, connected_station: gdansk)
+  Connection.create(station: gdansk, connected_station: warszawa)
+
+  Connection.create(station: krakow, connected_station: gdansk)
+  Connection.create(station: gdansk, connected_station: krakow)
 end
